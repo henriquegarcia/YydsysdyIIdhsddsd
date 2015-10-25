@@ -2,7 +2,9 @@
 var url;
 var urlEscrita;
 
-
+	/* 
+		Funcao que verifica se existe pacotes pendentes a serem enviados para o servidor de cada funcionalidade
+	*/
 function enviarDados(){
 	if(historico_agendamento.length >0){
 
@@ -109,6 +111,10 @@ function enviarDados(){
 	}
 }
 
+
+	/* 
+		Funcao para re conectar o usuario com o servidor novamente caso sua sessao expira
+	*/
 
 function reConectar(){
 	//var page = prefix+"adx/mobile/professor/leitura/testeConecao.php";

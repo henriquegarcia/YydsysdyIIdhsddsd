@@ -35,7 +35,8 @@ function destroi_secao(){
 	
 
 	
-	//verifica a conexao do usuario para mostrar o icone de desconectado.
+	//verifica a conexao do usuario para mostrar o icone de desconectado //
+
 	setInterval(function(){
 		
 
@@ -64,7 +65,10 @@ function destroi_secao(){
 		}
 	}, 3000);
 
-	// // verifica de tempos em tempos se existe alguma modificação do aplicativo
+
+
+	// verifica de tempos em tempos se existe alguma modificação do aplicativo //
+
 	setInterval(function(){
 		if((historico_agendamento.length >0 || historico_notas.length >0 || historico_frequencia.length >0) && unidade !== undefined){
 			
@@ -114,7 +118,8 @@ function destroi_secao(){
 
 
 	
-	// FUNCAO PARA APRESENTAR UMA TELA DE ERRO CASO A VERSAO DO SISTEMA SEJA MODIFICADA
+	// FUNCAO PARA APRESENTAR UMA TELA DE ERRO CASO A VERSAO DO SISTEMA SEJA MODIFICADA //
+
 	function erroDeVersao(){
 
 		$("#lean-overlay").remove();
@@ -150,6 +155,7 @@ function destroi_secao(){
 
 
 	// FUNCAO PARA SABER SE EXISTE E QUAL E A CONEXAO DO DEVICE
+
 	function estadoConexao(){
 
 		if(navigator.connection === undefined){
@@ -171,6 +177,7 @@ function destroi_secao(){
 	}
 
 	// FUNCAO QUE VERIFICA SE O USUARIO POSSUI CONEXAO E QUE CONSEGUE CONECTAR NO SERVIDOR
+
 	function isOnline(inicializacao){
 
 		// verifica a hora do sistema com a hora do dispositivo do professor
@@ -277,7 +284,8 @@ function destroi_secao(){
 		return resultado;
 	}
 
-	// FUNCAO PARA MODIFICAR AS TELAS DO 
+	// FUNCAO PARA MODIFICAR AS TELAS DO APP (REALIZA OS EFEITOS DE TROCA DE TELA)
+
 	function modifica_tela (proximaTela, envia, form){
 		if(envia === true){
 			$("#conteudoInicial").hide("scale",700);
@@ -331,6 +339,7 @@ function destroi_secao(){
 		},300);
 	}
 
+	// funcao para criar o objeto de carregando para o usuario
 
 	function esperaDisciplinas(){
 		if( AGENDAMENTOS === null){
@@ -391,7 +400,10 @@ function destroi_secao(){
 		}
 	}
 
+
+
 	// FUNCAO PARA LISTAR AS DISCIPLINAS DO PROFESSOR.
+
 	function carrega_disciplinas(AGENDAMENTOS, ALUNOS, NOTAS, opcao) {
 
 		$("#nomeSecao").html(opcao);
@@ -467,20 +479,19 @@ function destroi_secao(){
 		
 	}
 
-	/* funcao para colocar o nome do professor na tela principal */
+
+
+	// funcao para colocar o nome do professor na tela principal
+
 	function colocarNomeProfessor(adicionar){
 		var today = new Date();
 		var dia = today.getDate();
 		var mes = today.getMonth();
 		var ano = today.getFullYear();
-		// var horas = today.getHours();
-		// var minutos = today.getMinutes();
-
+		
 		if((dia.toString()).length == 1){dia = "0"+dia;}
 		if((mes.toString()).length == 1){mes = "0"+mes;}
-		// if((horas.toString()).length == 1){horas = "0"+horas;}
-		// if((minutos.toString()).length == 1){minutos = "0"+minutos;}
-
+		
 		var nomeProfessor = (LOGIN.nome).split(" ");
 		var ultimoNome = nomeProfessor[(nomeProfessor.length)-1];
 		if(ultimoNome == ""){ultimoNome = nomeProfessor[(nomeProfessor.length)-2];}
@@ -488,14 +499,23 @@ function destroi_secao(){
 		var stringNomeDoProfessor = "\
 			<p>Prof. "+nomeProfessor[0]+" "+ultimoNome+" </p>\
 		";		
-	    // var stringNomeDoProfessor = "\
-	    // 	Prof. "+nomeProfessor[0]+" "+ultimoNome+" - "+dia+"/"+mes+"/"+ano+" ás "+horas+":"+minutos+"\
-	    // ";
+
 	    if(adicionar == "append"){$("#nomeDoProfessor").append(stringNomeDoProfessor);}
 	    if(adicionar == "html"){$("#nomeDoProfessor").html(stringNomeDoProfessor);}
 	}
 	/* -------------------------------------------------- */
 
+
+
+
+	/* 
+		
+		Primeira funcao a ser chamada depois do login do usuario
+
+		A funcao define as variaveis de localStorege e carrega classes do materialize
+
+
+	 */
 
 function INICIO(){
 
@@ -545,6 +565,12 @@ function INICIO(){
 	}	
 
 }// fim da funcao INICIO()
+
+
+	/* 
+		As funcoes abaixo sao as interacoes que o usuario realiza atravez de um tap na tela do app.
+
+	*/
 
 		$(document).on('tap','.secaoInicio',function() {
 			$("#nomeSecao").html("Início");
@@ -1355,3 +1381,12 @@ function INICIO(){
 				modifica_tela("conteudoInicial");
 				return false;
 			});
+
+
+
+
+
+
+
+
+
